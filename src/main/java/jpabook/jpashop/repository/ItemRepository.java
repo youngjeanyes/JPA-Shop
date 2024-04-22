@@ -13,11 +13,12 @@ public class ItemRepository {
 
     private final EntityManager em;
 
-    public void save(Item item) {
-        if (item.getId() == null) {
+
+    public void save(Item item){
+        if(item.getId() == null){   //-> 신규 생성 객체인 경우
             em.persist(item);
         } else {
-            em.merge(item);
+            em.merge(item);         //-> update와 유사
         }
     }
 
