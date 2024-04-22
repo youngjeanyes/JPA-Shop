@@ -24,7 +24,10 @@ public class ItemService {
 
     //수정
     @Transactional
-    public void updateItem(Long itemId, String name, int price, int stockQuantity) {
+    public void updateItem(Long itemId,
+                           String name,
+                           int price,
+                           int stockQuantity) {
         Item item = itemRepository.findOne(itemId);
         item.setName(name);
         item.setPrice(price);

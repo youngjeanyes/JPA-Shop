@@ -62,11 +62,14 @@ public class Order {
         Order order = new Order();
         order.setMember(member);
         order.setDelivery(delivery);
+
+        //ArrayList에 요소 추가
         for (OrderItem orderItem : orderItems) {
             order.addOrderItem(orderItem);
         }
         order.setStatus(OrderStatus.ORDER);
         order.setOrderDate(LocalDateTime.now());
+
         return order;
     }
 

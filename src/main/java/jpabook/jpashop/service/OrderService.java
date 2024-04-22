@@ -22,13 +22,16 @@ public class OrderService {
     private final ItemRepository itemRepository;
 
     /**
-     * 주문
+     * 포인트1: 주문
      */
     @Transactional
-    public Long order(Long memberId, Long itemId, int count) {
+    public Long order(Long memberId,
+                      Long itemId,
+                      int count) {
 
         //엔티티 조회
         Member member = memberRepository.findOne(memberId);
+        //상품 조회
         Item item = itemRepository.findOne(itemId);
 
         //배송정보 생성
@@ -49,7 +52,7 @@ public class OrderService {
     }
 
     /**
-     * 주문 취소
+     * 포인트2: 주문 취소
      */
     @Transactional
     public void cancelOrder(Long orderId) {

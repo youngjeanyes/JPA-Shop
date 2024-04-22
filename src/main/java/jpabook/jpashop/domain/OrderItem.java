@@ -33,8 +33,11 @@ public class OrderItem {
 
     private int count; //주문 수량
 
-    //==생성 메서드==//
-    public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
+
+    //=== 생성 메서드 ===//
+    public static OrderItem createOrderItem(Item item,
+                                            int orderPrice,
+                                            int count) {
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
         orderItem.setOrderPrice(orderPrice);
@@ -44,13 +47,13 @@ public class OrderItem {
         return orderItem;
     }
 
-    //==비즈니스 로직==//
+    //=== 비즈니스 로직 ===//
     public void cancel() {
         getItem().addStock(count);
     }
 
-    //==조회 로직==//
 
+    //=== 조회 로직 ===//
     /**
      * 주문상품 전체 가격 조회
      */
