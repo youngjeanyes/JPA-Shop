@@ -36,10 +36,10 @@ public class Order {
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
-    private LocalDateTime orderDate; //주문시간
+    private LocalDateTime orderDate;    //주문시간
 
     @Enumerated(EnumType.STRING)
-    private OrderStatus status; //주문상태 [ORDER, CANCEL]
+    private OrderStatus status;         //주문상태 [ORDER, CANCEL]
 
     //==연관관계 메서드==//
     public void setMember(Member member) {

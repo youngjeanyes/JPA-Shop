@@ -23,6 +23,7 @@ public class Category {
     private String name;
 
     @ManyToMany
+    //중간 테이블 필요
     @JoinTable(name = "category_item",
             joinColumns = @JoinColumn(name = "category_id"),
             inverseJoinColumns = @JoinColumn(name = "item_id"))

@@ -10,17 +10,16 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor //-> final 있는 필드만 생성자를 생성
 @Transactional(readOnly = true)
-@RequiredArgsConstructor
 public class MemberService {
 
-    @Autowired
     private final MemberRepository memberRepository;
 
     /**
      * 회원 가입
      */
-    @Transactional
+    @Transactional  // <- class에 설정된 것보다 우선권 가짐 (기본: false)
     public Long join(Member member) {
 
         validateDuplicateMember(member);
@@ -33,16 +32,21 @@ public class MemberService {
      */
     private void validateDuplicateMember(Member member) {
         List<Member> findMembers = memberRepository.findByName(member.getName());
-        if (!findMembers.isEmpty()) {
+        if(!findMembers.isEmpty()){
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
     }
 
-    //회원 전체 조회
+    /**
+     * 전체 회원 조회
+     */
     public List<Member> findMembers() {
         return memberRepository.findAll();
     }
 
+    /**
+     * 회원 단건 조회 by id
+     */
     public Member findOne(Long memberId) {
         return memberRepository.findOne(memberId);
     }
