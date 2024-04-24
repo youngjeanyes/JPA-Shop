@@ -27,8 +27,9 @@ public class OrderRepository {
 
     public List<Order> findAllByString(OrderSearch orderSearch) {
 
-            String jpql = "select o from Order o join o.member m";
-            boolean isFirstCondition = true;
+        // *권장하지 않는 방법
+        String jpql = "select o from Order o join o.member m";
+        boolean isFirstCondition = true;
 
         //주문 상태 검색
         if (orderSearch.getOrderStatus() != null) {
